@@ -1,6 +1,6 @@
 {
   "name": "react-redux-substate",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "create substates to isolate components states",
   "main": "index.js",
   "scripts": {
