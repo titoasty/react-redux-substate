@@ -23,7 +23,7 @@ export default function connectSubstate(mapStateToProps = defaultMapStateToProps
 		let localDispatch = function(action) {
 			return dispatch({
 					...action,
-				_substate: ownProps.substateId
+				_substateId: ownProps.substateId
 			})
 		}
 
