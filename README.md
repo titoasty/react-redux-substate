@@ -2,6 +2,7 @@ React Redux Substate
 =========================
 Create substates to isolate your components.
 Heavily relies on [react-redux](https://github.com/reactjs/react-redux)
+
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/titoasty/react-redux-substate/master/LICENSE)
 
 ## Installation
