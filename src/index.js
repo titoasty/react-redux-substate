@@ -1,4 +1,4 @@
 import connectSubstate from './components/connect'
 import { reduceSubstate, substateReducer } from './components/reducer'
 
-export default { connectSubstate, reduceSubstate, substateReducer }
+export { connectSubstate, reduceSubstate, substateReducer }
