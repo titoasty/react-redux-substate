@@ -7,6 +7,9 @@ function getDisplayName(WrappedComponent) {
 	return WrappedComponent.displayName || WrappedComponent.name || 'Component'
 }
 
+const defaultMapStateToProps = state => ({})
+const defaultMapDispatchToProps = dispatch => ({ dispatch })
+
 export default connectSubstate = (mapStateToProps = defaultMapStateToProps, mapDispatchToProps = defaultMapDispatchToProps, mergeProps = mergeSubstate, options = {}) => {
 
 	let mapStateToPropsSubstate = (state, ownProps) => {

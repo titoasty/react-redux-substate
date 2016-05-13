@@ -1,6 +1,4 @@
 const substateReducer = (state = {}) => { return state }
-const defaultMapStateToProps = state => ({})
-const defaultMapDispatchToProps = dispatch => ({ dispatch })
 
 const hasSubstate = (state = null, substateId = null) => {
 	return state != null && substateId != null && state._substates && state._substates[substateId]
