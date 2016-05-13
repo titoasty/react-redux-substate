@@ -2,6 +2,7 @@ import React from 'react';
 const { Component, PropTypes, Children, createElement } = React;
 import { connect } from 'react-redux'
 import hoistStatics from 'hoist-non-react-statics'
+import { mergeSubstate, getSubstate } from '../util/substate'
 
 function getDisplayName(WrappedComponent) {
 	return WrappedComponent.displayName || WrappedComponent.name || 'Component'
@@ -9,27 +10,6 @@ function getDisplayName(WrappedComponent) {
 
 const defaultMapStateToProps = state => ({})
 const defaultMapDispatchToProps = dispatch => ({ dispatch })
-const mergeSubstate = (stateProps, dispatchProps, ownProps) => {
-	var props = 	{
-		...stateProps,
-		...dispatchProps,
-		...ownProps
-	}
-
-	let globalDispatch = props.dispatch
-	let localDispatch = function(action) {
-		return globalDispatch({
-			...action,
-			_substateId: props.substateId
-		})
-	}
-
-	return {
-		...props,
-		dispatch: localDispatch,
-		globalDispatch
-	}
-}
 
 export default function connectSubstate(mapStateToProps = defaultMapStateToProps, mapDispatchToProps = defaultMapDispatchToProps, mergeProps = mergeSubstate, options = {}) {
 
