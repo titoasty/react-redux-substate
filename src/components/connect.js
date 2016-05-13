@@ -9,6 +9,27 @@ function getDisplayName(WrappedComponent) {
 
 const defaultMapStateToProps = state => ({})
 const defaultMapDispatchToProps = dispatch => ({ dispatch })
+const mergeSubstate = (stateProps, dispatchProps, ownProps) => {
+	var props = 	{
+		...stateProps,
+		...dispatchProps,
+		...ownProps
+	}
+
+	let globalDispatch = props.dispatch
+	let localDispatch = function(action) {
+		return globalDispatch({
+			...action,
+			_substateId: props.substateId
+		})
+	}
+
+	return {
+		...props,
+		dispatch: localDispatch,
+		globalDispatch
+	}
+}
 
 export default function connectSubstate(mapStateToProps = defaultMapStateToProps, mapDispatchToProps = defaultMapDispatchToProps, mergeProps = mergeSubstate, options = {}) {
 

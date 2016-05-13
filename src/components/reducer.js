@@ -24,28 +24,6 @@ const getSubstate = (state, substateId = null) => {
 	return state._substates[substateId]
 }
 
-const mergeSubstate = (stateProps, dispatchProps, ownProps) => {
-	var props = 	{
-		...stateProps,
-		...dispatchProps,
-		...ownProps
-	}
-
-	let globalDispatch = props.dispatch
-	let localDispatch = function(action) {
-		return globalDispatch({
-			...action,
-			_substateId: props.substateId
-		})
-	}
-
-	return {
-		...props,
-		dispatch: localDispatch,
-		globalDispatch
-	}
-}
-
 const reduceSubstate = (reducer) => {
 	return (state, action) => {
 		let substateId = action._substateId
